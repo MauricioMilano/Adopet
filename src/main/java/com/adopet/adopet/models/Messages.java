@@ -17,10 +17,10 @@ public class Messages {
     Long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_from", referencedColumnName = "id")
-    UserA userFrom;
+    User userFrom;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_to", referencedColumnName = "id")
-    UserA userTo;
+    User userTo;
     Date date;
     String content;
 }

@@ -16,7 +16,7 @@ public class LikeInteraction {
     Long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    UserA userFrom;
+    User userFrom;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "publication_id", referencedColumnName = "id")
     Publication publication;

@@ -26,6 +26,6 @@ public class Publication {
     private List<Pet> pets = new ArrayList<>();
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    UserA userFrom;
+    User userFrom;
 
 }
