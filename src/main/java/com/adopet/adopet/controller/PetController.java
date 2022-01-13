@@ -1,2 +1,3 @@
-package com.adopet.adopet.controller;public class PetController {
+package com.adopet.adopet.controller;
+public class PetController {
 }

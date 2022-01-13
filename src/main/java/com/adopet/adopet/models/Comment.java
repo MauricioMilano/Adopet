@@ -17,7 +17,7 @@ public class Comment {
     String content;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    User userFrom;
+    UserA userFrom;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "publication_id", referencedColumnName = "id")
     Publication publication;
