@@ -18,6 +18,7 @@ public class UserController {
     public List<User> getAllUsers(){
         return repository.findAll();
     }
+
 //    @PostMapping("/user")
 //    public User saveUser(@RequestBody User user){
 //        return repository.save(user);

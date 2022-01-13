@@ -23,10 +23,12 @@ public class PublicationController {
     public Publication savePublication(@RequestBody Publication publication) {
         return repository.save(publication);
     }
+
     @DeleteMapping("/publications/{id}")
     public void deletePublication(@PathVariable Long id){
         repository.deleteById(id);
     }
+
     @PutMapping("/publications/{id}")
     public Publication updatePublication(@PathVariable Long id,@RequestBody Publication publication){
         Publication pb = repository.findById(id).get();
