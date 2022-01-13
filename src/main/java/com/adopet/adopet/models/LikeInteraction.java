@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Like {
+public class LikeInteraction {
     @Id
     @GeneratedValue
     Long id;
