@@ -14,13 +14,13 @@ import java.util.Set;
 public class UserResponse {
     private Long id;
     private String username;
-    private String email;
+//    private String email;
 //    private Set<Role> roles;
 
     public UserResponse (User user){
         this.setId(user.getId());
         this.setUsername(user.getUsername());
-        this.setEmail(user.getEmail());
+//        this.setEmail(user.getEmail());
 //        this.setRoles(user.getRoles());
     }
 }

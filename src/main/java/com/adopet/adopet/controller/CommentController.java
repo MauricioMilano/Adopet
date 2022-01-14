@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @ResponseBody
 public class CommentController {
@@ -45,9 +45,11 @@ public class CommentController {
     public CommentResponse postComment(@PathVariable Long publication_id, @RequestBody MessageResponse message){
         Comment comment = new Comment();
         comment.setContent(message.getMessage());
+        // Usuario da requisição
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long id = ((UserDetailsImpl)principal).getId();
         Optional<User> user = userRepository.findById(id);
+        // fim do usuario
         comment.setUserFrom(user.get());
         Optional<Publication> publication = publicationRepository.findById(publication_id);
         comment.setPublication(publication.get());
