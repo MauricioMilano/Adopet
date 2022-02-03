@@ -3,10 +3,13 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
 
 
 **POST**
-**cadastro**
+
+**Cadastro**
+
 **Path:** */api/auth/signup*
 
 - Request: 
+
 ```json
 {
   "username": "admin",
@@ -19,17 +22,23 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   ]
 }
 ```
+
 - Response: 
+
 ```json
 {
   "message": "User registered successfully!"
 }
 ```
+
 **POST**
+
 **Login**
+
 **Path:** */api/auth/signin*
 
 - Request: 
+
 ```json
 {
   "username": "admin",
@@ -37,6 +46,7 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
 }
 ```
 - Response: 
+
 ```json
 [
   {
@@ -52,15 +62,24 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   }
 ]
 ```
+
+
 **GET**
+
 **Publicacoes**
+
 **Path:** */publications*
+
 **Authorization:** bearer token
+
 - Request: 
+
 ```json
 
 ```
+
 - Response: 
+
 ```json
 [
   {
@@ -94,11 +113,18 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   }
 ]
 ```
+
 **POST**
+
 **publications**
+
 **Path:** */publications*
+
 **Authorization:** bearer token
+
+
 - Request: 
+
 ```json
 {
   "description": "Muito am├ível, pode adotar",
@@ -113,7 +139,9 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   ]
 }
 ```
+
 - Response: 
+
 ```json
 {
   "id ": 1,
@@ -129,15 +157,31 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   ]
 }
 ```
+
 **GET**
+
 **Likes**
+
 **Path:** */like/{publication_id}*
+
+
+
+
+| Param          | Description       |
+| -------------- | ----------------- |
+| publication_id | Id da publicação  | 
+
+
 **Authorization:** bearer token
+
 - Request: 
+
 ```json
 
 ```
+
 - Response: 
+
 ```json
 {
   "qtdLikes": 0,
@@ -145,29 +189,52 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
 }
 ```
 **POST**
+
 **Dar Like**
+
 **Path:** */like/{publication_id}*
+
+| Param          | Description       |
+| -------------- | ----------------- |
+| publication_id | Id da publicação  | 
+
 **Authorization:** bearer token
+
 - Request: 
+
 ```json
 
 ```
+
 - Response: 
+
 ```json
 {
   "qtdLikes": 1,
   "youLiked": true
 }
 ```
+
 **GET**
+
 **Ver comentarios por publicacao**
+
 **Path:** */comment/{publication_id}*
+
+| Param          | Description       |
+| -------------- | ----------------- |
+| publication_id | Id da publicação  | 
+
 **Authorization:** bearer token
+
 - Request: 
+
 ```json
 
 ```
+
 - Response: 
+
 ```json
 [
   {
@@ -192,17 +259,31 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   }
 ]
 ```
+
 **POST**
+
 **Postar Comentario**
+
 **Path:** */comment/{publication_id}*
+
+
+| Param          | Description       |
+| -------------- | ----------------- |
+| publication_id | Id da publicação  | 
+
+
 **Authorization:** bearer token
+
 - Request: 
+
 ```json
 {
   "message": "bonito cachorro"
 }
 ```
+
 - Response: 
+
 ```json
 {
   "id": 4,
@@ -225,17 +306,29 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   }
 }
 ```
+
 **POST**
+
 **Enviar mensagem no chat**
+
 **Path:** */chat/{user_id}*
+
+| Param          | Description   |
+| -------------- | ------------- |
+| user_id | Id do usuário | 
+
 **Authorization:** bearer token
+
 - Request: 
+
 ```json
 {
   "content": "Ola, tenho interesse em adotar o seu pet"
 }
 ```
+
 - Response: 
+
 ```json
 {
   "id": 1,
@@ -271,15 +364,27 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   }
 }
 ```
+
 **GET**
+
 **recuperar mensagens com o usuario especifico**
-**Path:** */chat/3*
+
+**Path:** */chat/{user_id}*
+
+
+| Param          | Description   |
+| -------------- | ------------- |
+| user_id        | Id do usuário | 
+
 
 - Request: 
+
 ```json
 
 ```
+
 - Response: 
+
 ```json
 [
   {
@@ -317,15 +422,22 @@ Api feita em SpringBoot para aplicação de adoção de Pets. O chamado Adopet �
   }
 ]
 ```
+
 **GET**
+
 **Profile**
+
 **Path:** */profile*
+
 **Authorization:** bearer token
+
 - Request: 
+
 ```json
 
 ```
 - Response: 
+
 ```json
 {
   "id": 5,
