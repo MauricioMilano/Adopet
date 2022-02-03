@@ -1,8 +1,10 @@
 package com.adopet.adopet.controller;
 
 import com.adopet.adopet.models.*;
-import com.adopet.adopet.models.auth.MessageResponse;
-import com.adopet.adopet.models.publication.*;
+import com.adopet.adopet.models.requests.PublicationRequest;
+import com.adopet.adopet.models.responses.CommentResponse;
+import com.adopet.adopet.models.responses.PublicationCompleteResponse;
+import com.adopet.adopet.models.responses.PublicationResponse;
 import com.adopet.adopet.repositories.CommentRepository;
 import com.adopet.adopet.repositories.LikeRepository;
 import com.adopet.adopet.repositories.PublicationRepository;
@@ -52,7 +54,30 @@ public class PublicationController {
         });
         return pubResponse;
     }
-
+    @GetMapping("/myPublications")
+    public List<PublicationCompleteResponse> myPublications(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> user = userRepository.findById(((UserDetailsImpl)principal).getId());
+        ArrayList<Publication> publications = repository.findAllByUserFrom(user.get());
+        List<PublicationCompleteResponse> pubResponse = new ArrayList<>();
+        publications.forEach(publication -> {
+            PublicationCompleteResponse publicationCompleteResponse = new PublicationCompleteResponse(publication);
+            List<Comment> comments = commentRepository.findAllByPublication(publication);
+            List<CommentResponse> commentsResponses = new ArrayList<>();
+            comments.forEach(comment -> {
+                commentsResponses.add(new CommentResponse(comment));
+            });
+            publicationCompleteResponse.setComments(commentsResponses);
+            Optional<LikeInteraction> like = likeRepository.findByUserFromAndPublication(user.get(),publication);
+            if(like.isPresent()){
+                publicationCompleteResponse.setLiked(true);
+            }else {
+                publicationCompleteResponse.setLiked(false);
+            }
+            pubResponse.add(publicationCompleteResponse);
+        });
+        return pubResponse;
+    }
     @PostMapping("/publications")
     public PublicationResponse savePublication(@RequestBody PublicationRequest publicationRequest) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -81,7 +106,18 @@ public class PublicationController {
 
     @DeleteMapping("/publications/{id}")
     public void deletePublication(@PathVariable Long id){
-        repository.deleteById(id);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long user_id = ((UserDetailsImpl)principal).getId();
+        Optional<User> user = userRepository.findById(user_id);
+        Optional<Publication> publication = repository.findById(id);
+        if(user.isPresent() && publication.isPresent()){
+            if (publication.get().getUserFrom().getId() == user.get().getId()){
+//                likeRepository.deleteAllByPublication(publication.get());
+
+                repository.deleteById(id);
+            }
+        }
+
     }
 
     @PutMapping("/publications/{id}")

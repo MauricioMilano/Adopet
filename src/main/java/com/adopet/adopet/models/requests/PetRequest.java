@@ -1,4 +1,4 @@
-package com.adopet.adopet.models.publication;
+package com.adopet.adopet.models.requests;
 
 import com.adopet.adopet.models.Pet;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

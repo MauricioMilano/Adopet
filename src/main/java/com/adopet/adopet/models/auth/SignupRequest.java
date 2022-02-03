@@ -1,9 +1,15 @@
 package com.adopet.adopet.models.auth;
 
+import lombok.Data;
+
 import java.util.Set;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.validation.constraints.*;
-
+@Data
 public class SignupRequest {
     @NotBlank
     @Size(min = 3, max = 20)
@@ -15,6 +21,8 @@ public class SignupRequest {
     private String email;
 
     private Set<String> role;
+
+    String picture;
 
     @NotBlank
     @Size(min = 6, max = 40)

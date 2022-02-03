@@ -1,4 +1,4 @@
-package com.adopet.adopet.models.publication;
+package com.adopet.adopet.models.responses;
 
 import com.adopet.adopet.models.Publication;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PublicationCompleteResponse extends PublicationResponse{
+public class PublicationCompleteResponse extends PublicationResponse {
     boolean liked;
     List<CommentResponse> comments;
     public PublicationCompleteResponse(Publication publication){

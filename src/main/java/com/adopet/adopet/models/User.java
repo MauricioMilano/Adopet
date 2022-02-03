@@ -1,12 +1,16 @@
 package com.adopet.adopet.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
-
+@Data
 @Entity
 @Table(	name = "users",
         uniqueConstraints = {
@@ -17,7 +21,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "picture", columnDefinition = "LONGBLOB")
+    byte[]  picture;
     @NotBlank
     @Size(max = 20)
     private String username;
@@ -40,10 +47,13 @@ public class User {
     public User() {
     }
 
-        public User(String username, String email, String password) {
+        public User(String username, String email, String password,String picture) {
             this.username = username;
             this.email = email;
             this.password = password;
+
+            String encodedImg = picture.split(",")[1];
+            this.picture = Base64.getDecoder().decode(encodedImg.getBytes(StandardCharsets.UTF_8));
         }
 
     public Long getId() {

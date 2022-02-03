@@ -1,5 +1,6 @@
-package com.adopet.adopet.models.publication;
+package com.adopet.adopet.models.requests;
 
+import com.adopet.adopet.models.responses.UserResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

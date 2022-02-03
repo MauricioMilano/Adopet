@@ -24,7 +24,7 @@ public class Publication {
             orphanRemoval = true
     )
     private List<Pet> pets = new ArrayList<>();
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     User userFrom;
 

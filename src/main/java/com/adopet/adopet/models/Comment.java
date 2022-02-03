@@ -15,10 +15,10 @@ public class Comment {
     @GeneratedValue
     Long id;
     String content;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     User userFrom;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "publication_id", referencedColumnName = "id")
     Publication publication;
 }

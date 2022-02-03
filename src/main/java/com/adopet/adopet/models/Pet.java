@@ -1,6 +1,6 @@
 package com.adopet.adopet.models;
 
-import com.adopet.adopet.models.publication.PetRequest;
+import com.adopet.adopet.models.requests.PetRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

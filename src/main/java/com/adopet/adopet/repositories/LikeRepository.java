@@ -17,4 +17,5 @@ public interface LikeRepository extends JpaRepository<LikeInteraction, Long> {
 //    @Query("SELECT * FROM LikeInteraction t where t.publication_id = :publicationId")
     public Optional<List<LikeInteraction>> findAllByPublicationId(Long publicationId);
 //     List<LikeInteraction> findByPublicationAndUser(Long publication, Long user );
+    public void deleteByPublication(Publication publicationId);
 }

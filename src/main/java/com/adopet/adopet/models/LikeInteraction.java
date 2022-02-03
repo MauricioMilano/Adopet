@@ -16,7 +16,7 @@ public class LikeInteraction {
     @GeneratedValue
     Long id;
     @OneToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id",    referencedColumnName = "id")
     User userFrom;
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "publication_id", referencedColumnName = "id")

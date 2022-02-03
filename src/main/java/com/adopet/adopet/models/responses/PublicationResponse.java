@@ -1,11 +1,13 @@
-package com.adopet.adopet.models.publication;
+package com.adopet.adopet.models.responses;
 
+import com.adopet.adopet.models.Messages;
 import com.adopet.adopet.models.Pet;
 import com.adopet.adopet.models.Publication;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,5 +28,12 @@ public class PublicationResponse {
         UserResponse userResponse = new UserResponse(publication.getUserFrom());
         this.setUser(userResponse);
         this.setPets(publication.getPets());
+    }
+    public static ArrayList<PublicationResponse> getPublicationResponsesFromArrayOfPublications(ArrayList<Publication> publications){
+        ArrayList<PublicationResponse> responses = new ArrayList<>();
+        publications.forEach(publication -> {
+            responses.add(new PublicationResponse(publication));
+        } );
+        return responses;
     }
 }

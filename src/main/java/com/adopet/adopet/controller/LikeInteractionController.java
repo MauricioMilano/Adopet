@@ -1,11 +1,9 @@
 package com.adopet.adopet.controller;
 
 import com.adopet.adopet.models.LikeInteraction;
-import com.adopet.adopet.models.Pet;
 import com.adopet.adopet.models.Publication;
 import com.adopet.adopet.models.User;
-import com.adopet.adopet.models.publication.LikeResponse;
-import com.adopet.adopet.models.publication.PublicationResponse;
+import com.adopet.adopet.models.responses.LikeResponse;
 import com.adopet.adopet.repositories.LikeRepository;
 import com.adopet.adopet.repositories.PublicationRepository;
 import com.adopet.adopet.repositories.UserRepository;

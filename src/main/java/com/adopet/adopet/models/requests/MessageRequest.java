@@ -1,4 +1,4 @@
-package com.adopet.adopet.models.publication;
+package com.adopet.adopet.models.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LikeResponse {
-    int qtdLikes;
-    Boolean youLiked;
+public class MessageRequest {
+    String content;
 }
